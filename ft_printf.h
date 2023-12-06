@@ -1,5 +1,16 @@
-#ifndef LIBFT_H
-# define LIBFT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkoval <kkoval@student.42barcelon>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 17:53:18 by kkoval            #+#    #+#             */
+/*   Updated: 2023/12/06 18:20:24 by kkoval           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#ifndef PRINTF_H
+# define PRINTF_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -15,5 +26,5 @@ int		ft_putunsign(unsigned int n);
 int		ft_puthexa(long long int n);
 int		ft_puthexa_uc(long long int n);
 int		ft_putptr(void *ptr);
-char    *ft_strdup(const char *str1);
+char	*ft_strdup(const char *str1);
 #endif
