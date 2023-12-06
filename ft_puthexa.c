@@ -9,7 +9,7 @@
 /*   Updated: 2023/12/05 21:34:56 by kkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_puthexa(long long int n)
 {

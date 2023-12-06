@@ -1,19 +1,27 @@
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_printf(const char *str, ...)
+{
+		int	len;
+		int	i;
+		int total;
+		va_list args;
 
-int		ft_printf(const char *str, ...);
-int		ft_format_specifier(va_list *args, char format);
-int		ft_putchar(int c);
-int		ft_putstr(char *str);
-int		ft_putnbr(int n);
-int		ft_putunsign(unsigned int n);
-int		ft_puthexa(long long int n);
-int		ft_puthexa_uc(long long int n);
-int		ft_putptr(void *ptr);
-char    *ft_strdup(const char *str1);
-#endif
+		i = 0;
+		total = 0;
+		va_start(args, str);
+		while (str[i] != '\0')
+		{
+				if (str[i] != '%')
+				{
+					ft_putchar(str[i]);
+					total++;
+				}
+				if (str[i] == '%' && str[i + 1] != '\0')
+					 total += ft_format_specifier(&args, str[++i]); 			
+				i++;
+		}
+		len = total;
+		va_end(args);
+		return (len);
+}
