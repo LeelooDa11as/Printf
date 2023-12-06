@@ -15,7 +15,7 @@ SRCS = ft_putchar.c ft_putnbr.c ft_putunsign.c ft_format_specifier.c ft_puthexa.
 
 OBJS = ${SRCS:.c=.o}
 
-HEADER = printf.h
+HEADER = ft_printf.h
 NAME = libftprintf.a
 CC = gcc
 RM = rm -f
