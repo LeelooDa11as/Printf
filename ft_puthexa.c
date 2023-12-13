@@ -6,7 +6,7 @@
 /*   By: kkoval <kkoval@student.42barcelon>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:33:36 by kkoval            #+#    #+#             */
-/*   Updated: 2023/12/06 18:05:49 by kkoval           ###   ########.fr       */
+/*   Updated: 2023/12/13 20:13:30 by kkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -15,20 +15,35 @@ int	ft_puthexa(unsigned int n)
 {
 	int		len;
 	char	*base;
+	int		aux;
 
-	base = ft_strdup("0123456789abcdef");
+
+	base = "0123456789abcdef";
 	if (base == NULL)
 		return (-1);
 	len = 0;
 	if (n < 16)
-		len += write(1, &base[n], 1);
-	else
+	{
+		if ( write(1, &base[n], 1) != 1)
+			return (-1);
+		return (++len);
+	}
+	aux = ft_puthexa(n / 16);
+	if(aux == -1)
+		return (-1);
+	len += aux;
+	aux = ft_puthexa(n % 16);
+	if (aux == -1)
+		return (-1);
+	return (len + aux);
+}
+/*	else
 	{
 		len += ft_puthexa(n / 16);
 		len += ft_puthexa(n % 16);
 	}
 	return (len);
-}
+}*/
 /*
 int	main(void)
 {

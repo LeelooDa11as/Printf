@@ -6,7 +6,7 @@
 /*   By: kkoval <kkoval@student.42barcelon>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:07:21 by kkoval            #+#    #+#             */
-/*   Updated: 2023/12/06 18:07:25 by kkoval           ###   ########.fr       */
+/*   Updated: 2023/12/13 20:34:17 by kkoval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_puthexa_uc(long long int n)
 	char	*base;
 
 	len = 0;
-	base = ft_strdup("0123456789ABCDEF");
+	base = "0123456789ABCDEF";
 	if (base == NULL)
 		return (-1);
 	if (n < 16)
