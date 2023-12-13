@@ -18,7 +18,7 @@ int	ft_putptr(void *ptr)
 
 	if (write(1, "0x", 2) != 2)
 		return (-1);
-	len = ft_puthexa((long long int)ptr);
+	len = ft_puthexa((unsigned long long int)ptr);
 	if (len == -1)
 		return (-1);
 	return (len + 2);

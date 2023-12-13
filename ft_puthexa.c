@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthexa(long long int n)
+int	ft_puthexa(unsigned int n)
 {
 	int		len;
 	char	*base;
@@ -29,3 +29,13 @@ int	ft_puthexa(long long int n)
 	}
 	return (len);
 }
+/*
+int	main(void)
+{
+	int len;
+
+	len = ft_puthexa(-1);
+	printf("%x", -1);
+	printf("%d", len);
+	return (1);
+}*/

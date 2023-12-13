@@ -26,7 +26,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] != '%')
 		{
-			ft_putchar(str[i]);
+			if (write(1, &str[i], 1) != 1)
+				return (-1);
 			total++;
 		}
 		if (str[i] == '%' && str[i + 1] != '\0')
@@ -37,3 +38,9 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
+/*
+int	main(void)
+{
+	ft_printf("%d", -999);
+	return (1);
+}*/

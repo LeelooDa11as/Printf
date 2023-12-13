@@ -12,36 +12,60 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_min_int(void)
 {
-	int		len;
-	char	c;
+	if (write(1, "-2147483648", 11) != 11)
+		return (-1);
+	return (11);
+}
+
+int	ft_pos_recur(int n)
+{
+	int	len;
+	int	aux;
 
 	len = 0;
-	if (n >= 0 && n <= 9)
+	if (n <= 9)
 	{
-		c = n + '0';
-		return (write(1, &c, 1));
+		if (ft_putchar(n + '0') != 1)
+			return (-1);
+		return (++len);
 	}
-	if (n == -2147483647)
-		return (write(1, "-2147483647", 11));
-	else if (n < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-		++len;
-	}
-	len += ft_putnbr(n / 10);
-	len += ft_putnbr(n % 10);
-	return (len);
+	aux = ft_pos_recur(n / 10);
+	if (aux == -1)
+		return (-1);
+	len += aux;
+	if (ft_pos_recur(n % 10) != 1)
+		return (-1);
+	return (++len);
 }
 
+int	ft_putnbr(int n)
+{
+	int	len;
+	int	aux;
+
+	len = 0;
+	if (n == -2147483648)
+		return (ft_min_int());
+	if (n < 0)
+	{
+		if (write(1, "-", 1) != 1)
+			return (-1);
+		n *= -1;
+		len++;
+	}
+	aux = ft_pos_recur(n);
+	if (aux != -1)
+		return (len + aux);
+	return (-1);
+}
+/*
 int	main(void)
 {
-	unsigned long int	n;
+	int	len;
 
-	n = 4294967295;
-	printf(" %d", n);
-	write(1, "\n", 1);
-	printf(" %d", n);
-}
+	len = ft_putnbr(10);
+	printf("\n%d", len);
+	return (1);
+}*/
