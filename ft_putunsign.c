@@ -15,19 +15,17 @@
 int	ft_putunsign(unsigned int n)
 {
 	int		len;
-	char	c;
 	int		aux;
 
 	len = 0;
 	if (n <= 9)
 	{
-		c = n + '0';
 		if (ft_putchar(n + '0') != 1)
 			return (-1);
 		return (++len);
 	}
 	aux = ft_putunsign(n / 10);
-	if(aux == -1)
+	if (aux == -1)
 		return (-1);
 	len += aux;
 	aux = ft_putunsign(n % 10);

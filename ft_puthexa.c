@@ -11,25 +11,24 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_puthexa(unsigned int n)
+int	ft_puthexa(unsigned long long int n)
 {
 	int		len;
 	char	*base;
 	int		aux;
 
-
+	len = 0;
 	base = "0123456789abcdef";
 	if (base == NULL)
 		return (-1);
-	len = 0;
 	if (n < 16)
 	{
-		if ( write(1, &base[n], 1) != 1)
+		if (write(1, &base[n], 1) != 1)
 			return (-1);
 		return (++len);
 	}
 	aux = ft_puthexa(n / 16);
-	if(aux == -1)
+	if (aux == -1)
 		return (-1);
 	len += aux;
 	aux = ft_puthexa(n % 16);

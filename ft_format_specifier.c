@@ -25,11 +25,11 @@ int	ft_format_specifier(va_list *args, char format)
 	else if (format == 'u')
 		return (ft_putunsign(va_arg(*args, unsigned int)));
 	else if (format == 'x')
-		return (ft_puthexa(va_arg(*args, long long int)));
+		return (ft_puthexa(va_arg(*args, unsigned int)));
 	else if (format == '%')
 		return (ft_putchar('%'));
 	else if (format == 'X')
-		return (ft_puthexa_uc(va_arg(*args, long long int)));
+		return (ft_puthexa_uc(va_arg(*args, unsigned int)));
 	else
 		return (-1);
 }

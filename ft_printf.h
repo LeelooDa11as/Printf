@@ -23,8 +23,8 @@ int		ft_putchar(int c);
 int		ft_putstr(const char *str);
 int		ft_putnbr(int n);
 int		ft_putunsign(unsigned int n);
-int		ft_puthexa(unsigned int n);
-int		ft_puthexa_uc(long long int n);
+int		ft_puthexa(unsigned long long int n);
+int		ft_puthexa_uc(unsigned long long int n);
 int		ft_putptr(void *ptr);
 char	*ft_strdup(const char *str1);
 #endif

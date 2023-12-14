@@ -12,10 +12,12 @@
 
 #include "ft_printf.h"
 
-int	ft_puthexa_uc(long long int n)
+int	ft_puthexa_uc(unsigned long long int n)
+
 {
 	int		len;
 	char	*base;
+	int		aux;
 
 	len = 0;
 	base = "0123456789ABCDEF";
@@ -23,20 +25,23 @@ int	ft_puthexa_uc(long long int n)
 		return (-1);
 	if (n < 16)
 	{
-		len += write(1, &base[n], 1);
-		//error checker
+		if (write(1, &base[n], 1) != 1)
+			return (-1);
+		return (++len);
 	}
-	else
-	{
-		len += ft_puthexa_uc(n / 16);
-		len += ft_puthexa_uc(n % 16);
-	}
-	return (len);
+	aux = ft_puthexa_uc(n / 16);
+	if (aux == -1)
+		return (-1);
+	len += aux;
+	aux = ft_puthexa_uc(n % 16);
+	if (aux == -1)
+		return (-1);
+	return (len + aux);
 }
 /*
 int main (void)
 {
-		long long int n = 0xE45;
+		long long int n = 0xFFFFFFFF;
 		ft_puthexa_uc(n);
 		write(1, "\n", 1);
 		printf("%X", 0XE45);
